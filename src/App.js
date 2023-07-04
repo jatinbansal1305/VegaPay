@@ -1,23 +1,26 @@
-import logo from './logo.svg';
-import './App.css';
+
+
+
+
+
+import { CardSale } from './screens/CardSaleScreen';
+import Sidebar from './components/LeftSideBar';
+import { useContext } from 'react';
+import { AppContext } from './contexts/CardContext';
+import TopBar from './components/AppBar';
+
 
 function App() {
+  const { isOpen } = useContext(AppContext);
+
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
+    <div style={{backgroundColor :'#f3f2f2',width :'100%',height :'100%'}} >
+    <Sidebar/>
+   
+    <div style={{marginLeft: isOpen ? '240px' : '40px',
+          transition: 'margin-left 0.3s ease-in-out'}}>
+        <CardSale/>
+    </div>
     </div>
   );
 }
